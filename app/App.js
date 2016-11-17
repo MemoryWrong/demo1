@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import CustomList from './List/CustomList';
 import {data} from './service/API';
+import {border} from './common/utility';
 
 export default class App extends Component {
     componentDidMount(){
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
         height:60,
         justifyContent: 'center',
         alignItems: 'center',
-        borderBottomWidth:1,
+        borderBottomWidth:border(),
         borderColor:'#dddddd',
     },
     headerText:{

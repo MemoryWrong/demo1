@@ -9,7 +9,8 @@ import {
     Dimensions,
     Image,
 } from 'react-native';
-import {Http} from '../service/service'
+import {Http} from '../service/service';
+import {border} from '../common/utility';
 
 var {width, height} = Dimensions.get('window');
 const api_endpoint = 'https://jsonplaceholder.typicode.com/posts/';
@@ -141,7 +142,7 @@ export default class CustomList extends Component {
 const styles = StyleSheet.create({
     row: {
         backgroundColor: '#ffffff',
-        borderBottomWidth: 1,
+        borderBottomWidth: border(),
         borderColor: '#dddddd',
         paddingTop: 5,
         paddingBottom: 5,
