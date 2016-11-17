@@ -39,14 +39,14 @@ export default class CustomList extends Component {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(json),
                 loaded: true,
-                loadMore:false,
-                refresh:false,
+                loadMore: false,
+                refresh: false,
             });
         }).done()
 
     }
 
-    //some time the params will be very complex.... so get this initRequest func individually....
+    //some times the params will be very complex.... so get this initRequest func individually....
     initRequest(url) {
         return Http(url);
     }
@@ -69,10 +69,10 @@ export default class CustomList extends Component {
                     <Text ellipsizeMode='tail' numberOfLines={1} style={styles.title}>{rowData.title}</Text>
                     <Text ellipsizeMode='tail' numberOfLines={2} style={styles.body}>{rowData.body}</Text>
                 </View>
-                <View></View>
-               <View>
-                   <Image resource={require('../img/arrow_detail_gray.png')}/>
-               </View>
+                <View style={{flex:1}}></View>
+                <View style={{justifyContent:'center'}}>
+                    <Image style={styles.arrow} source={require('../img/arrow_detail_gray.png')}/>
+                </View>
             </View>
         )
     }
@@ -84,14 +84,16 @@ export default class CustomList extends Component {
             </View>
         )
     }
-    renderLoadingMoreView(){
+
+    renderLoadingMoreView() {
         return (
             <View style={styles.loadingMore}>
                 <Text>Loading More....</Text>
             </View>
         )
     }
-    renderRefreshView(){
+
+    renderRefreshView() {
         return (
             <View style={styles.loading}>
                 <Text>Refresh More....</Text>
@@ -99,18 +101,20 @@ export default class CustomList extends Component {
         )
     }
 
-    loadingMoreData(){
+    loadingMoreData() {
         console.log('loading more data....')
         this.setState({
-            loadMore:true,
+            loadMore: true,
         })
     }
-    refreshData(){
+
+    refreshData() {
         console.log('refreshing more data....')
         this.setState({
-            refresh:true,
+            refresh: true,
         })
     }
+
     render() {
         return (
             <View>
@@ -143,6 +147,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         paddingLeft: 15,
         paddingRight: 15,
+        flexDirection: 'row',
     },
     loading: {
         height: height,
@@ -151,21 +156,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    loadingMore:{
-        backgroundColor:'red',
-        height:40,
-        width:width,
+    loadingMore: {
+        backgroundColor: 'red',
+        height: 40,
+        width: width,
         alignItems: 'center',
         justifyContent: 'center',
     },
-    title:{
-        width:60,
-        color:'#111111',
-        fontSize:14,
+    title: {
+        width: 200,
+        color: '#666666',
+        fontSize: 10,
     },
-    title:{
-        width:200,
-        color:'#666666',
-        fontSize:10,
+    body: {
+        width: 300,
+        color: '#111111',
+        fontSize: 14,
+    },
+    arrow: {
+        // paddingRight:10,
+        marginRight: 10,
     }
 })
