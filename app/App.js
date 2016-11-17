@@ -11,9 +11,10 @@ import {
     Text,
     View,
     InteractionManager,
+    Platform,
 } from 'react-native';
 import CustomList from './List/CustomList';
-import {data} from '../service/API';
+import {data} from './service/API';
 
 export default class App extends Component {
     componentDidMount(){
@@ -25,7 +26,10 @@ export default class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-               <CustomList data={data()}/>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>ListView Demo</Text>
+                </View>
+                <CustomList data={data()}/>
             </View>
         );
     }
@@ -34,9 +38,8 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        marginTop: (Platform.OS === 'ios') ? 18 : 0,
+        backgroundColor: '#f4f5f6',
     },
     welcome: {
         fontSize: 20,
@@ -48,5 +51,17 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
+    header:{
+        backgroundColor:'#ffffff',
+        height:60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomWidth:1,
+        borderColor:'#dddddd',
+    },
+    headerText:{
+        color:'#111111',
+        fontSize:24,
+    }
 });
 
